@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto Condensed", sans-serif;;
+}
+
+.middle{
+    position: relative;
+    height: 135rem;
+    top: 0;
+  
+}
+.middle .container-middle {
+    position: absolute;
+    background: white;
+    top: -10rem;
+    right: 0;
+    left: 0;
+
+    height: 50rem;
+}
+.middle .tab-item .link-item{
+    padding-left: 7rem;
+    padding-top: 3rem;
+}
+.middle .tab-item .link-item a{
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    margin-left: 0.5rem;
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    font-weight: 500;
+    border: solid 1px black;
+}
+
+.middle .tab-item .link-item a:hover{
+    background-color: black;
+    color: white;
+}
+
+/* list item */
+
+.carousel-inner {
+    padding-left: 2rem;
+    padding-top: 3rem;
+}

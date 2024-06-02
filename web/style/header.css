@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto Condensed", sans-serif;;
+}
+#check {
+    display: none;
+}
+
+.navbar {
+    background-color: white;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.head{
+    background-color: black;
+    color: white;
+    height: 3rem;
+    position: relative;
+}
+
+.head .head-side-1 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.head .head-side-2 {
+    position: fixed;
+    display: grid;
+    height: 20rem;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: 100%;
+    color: black;
+    background-color: aquamarine;
+    padding: 2rem 5rem;
+    /* top: 0; */
+    top: -350px;
+    z-index: 1;
+}
+
+.head .head-side-1 .btn_one {
+    padding-left: 10px;
+}
+
+.head .head-side-2 .text {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.head .head-side-2 .text .btn_two {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+
+}
+
+.head .head-side-2 .text .btn_two label i{
+    font-size: 50px;
+}
+
+.head .head-side-2 .text .content {
+    padding: 1rem 0;
+}
+
+.head .head-side-2 .text .link {
+    color: black;
+}
+
+.head .head-side-2 .text .link:hover {
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    transition: background-color 1s;
+}
+
+/* .navbar .grid {
+    display: grid;
+    grid-template-columns: 2fr 5fr 3fr;
+    grid-template-rows: 5rem;
+} */
+
+.navbar .container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 5fr 3fr;
+    grid-template-rows: 5rem;
+} 
+
+.navbar img{
+    width: 100px;
+}
+
+.navbar .icon-head {
+    width: 20px;
+    
+}
+
+.navbar .search-icon {
+    width: 20px;
+}
+
+.navbar .left-section img{
+    position: relative;
+   width: 70px;
+   border-radius: 50%;
+    left: 20px;
+    top: 5px;
+}
+.navbar .middle-section {
+    position: relative;
+}
+
+.navbar .middle-section ul li:first-child,
+.navbar .middle-section ul li:nth-child(2){
+    font-weight: bold;
+}
+
+.navbar .middle-section ul{
+    display: flex;
+    position: relative;
+}
+
+.navbar .middle-section nav {
+    position: absolute;
+    left: 10rem;
+    /* bottom: 15px;
+    left: 15rem; */
+}
+
+.navbar .middle-section li{
+    color: white;
+    padding: 0 4rem 0 0;
+}
+.navbar .middle-section li a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    padding-bottom: 12px;
+    
+}
+
+.navbar .middle-section li a:hover{
+    border-bottom: solid 2px black;
+
+} 
+
+.navbar .right-section {
+    position: relative;
+    right: -4rem;
+}
+
+.navbar .right-section .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+
+}
+
+.navbar .right-section a{
+    padding: 0 10px 0 10px;
+    
+}
+
+.right-section .container {
+    position: absolute;
+    bottom: -3rem;
+    width: 100%;
+
+    
+}
+.navbar .right-section .search-place{
+    position: relative;
+}
+.navbar .right-section .search-button {
+    position: absolute;
+    right: 10px;
+    height: 100%;
+    border: none;
+    
+}
+
+.navbar .right-section .notification-item {
+    position: relative;
+    
+}
+
+.navbar .right-section .tool-shop {
+    position: absolute;
+    background-color: aquamarine;
+    font-size: 20px;
+    font-weight: 500;
+    width: 20rem;
+    height: 5rem;
+    left: -17rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 2;
+}
+
+.navbar .right-section .notification-item:hover .tool-shop{
+    opacity: 1;
+}
+
+.navbar .search-place .search-bar {
+    height: 32px;
+    width: 191px;
+    background-color: rgb(236, 239, 241);
+    border: none;
+    padding-left: 10px;
+}
+
+#check:checked ~ .head-side-2{
+    /* position: absolute; */
+    top: 0px;
+    transition: all 0.3s linear;
+}

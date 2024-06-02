@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto Condensed", sans-serif;;
+}
+
+.trailer-video {
+    position: relative;
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+}
+
+
+.header .content-video{
+    position: absolute;
+    color: white;
+    bottom: 25rem;
+    left: 5rem;
+}
+
+.header .content-video h1{
+    font-size: 3rem;
+}
+
+.header .content-video p{
+    font-size: 1.2rem;
+}
+
+.header .content-video a{
+    position: absolute;
+    background-color: white;
+    text-decoration: none;
+    color: black;
+    bottom: -5rem;
+    padding: 1rem 2rem 1rem 2rem;
+}
+
+.video-trailer {
+    width: 100%;
+    height: 100%;
+}
+
+.situation-video {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+}
+
+.playPause,
+.mute {
+    position: absolute;
+    font-size: 50px;
+    width: 30px;
+    height: 30px;
+    color: white;
+    top: 20px;
+    right: 20px;
+    border: solid 1px white;
+    border-radius: 200%;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.playPause:hover,
+.mute:hover{
+    opacity: 1;
+}
+
+.mute{
+    top: 7rem;
+}
+
+/* .mute.muted {
+    opacity: 0.5;
+} */
+
+.mute .slash{
+    position: absolute;
+    width: 2px;
+    height: 85%;
+    background: white;
+    transform: rotate(-40deg);
+    top: 9px;
+    display: none;
+}
+
+.mute.muted .slash {
+    display: block;
+}
