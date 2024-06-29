@@ -3,6 +3,7 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
 -->
+<%@page contentType="text/html" pageEncoding="utf-8" %>
 <html>
     <head>
         <title>Vike Online - Shopping</title>
@@ -12,12 +13,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        
+          
         <!-- UIkit CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/css/uikit.min.css" />
 
 
-        <link rel="shortcut icon" href="image/logoSHop.png" type="image/x-icon">
+        <link rel="shortcut icon" href="image/logo/logoSHop.png" type="image/x-icon">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
@@ -73,17 +74,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             <div class="navbar">
                 <div class="container">
                     <div class="left-section">
-                        <a href="index.html">
-                            <img src="image/logo/logoSHop.png" alt="#">
+                        <a href="index.jsp">
+                            <img src="image/logo/logo_title.png" alt="#">
                         </a>
                     </div>
                     <div class="middle-section ">
                         <nav>
                             <ul>
-                                <li><a href="include/nam.html">Nam</a></li>
-                                <li><a href="nu.html">Nữ</a></li>
-                                <li><a href="discount.html">Giảm giá</a></li>
-                                <li><a href="include/all.html">Tất cả</a></li>
+                                <li><a href="include/nam.jsp">Nam</a></li>
+                                <li><a href="include/nu.jsp">Nữ</a></li>
+                                <li><a href="include/discount.jsp">Giảm giá</a></li>
+                                <li><a href="include/all.jsp">Tất cả</a></li>
                             </ul>
                         </nav>
     
@@ -96,14 +97,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                                     <img class="search-icon" src="icons/search.svg" alt="#">
                                 </button>
                             </div>
-                            <a href="sigin.html">
+                            <a href="include/sigin.jsp">
                                 <img class="icon-head" src="icons/user.png" alt="#">
                             </a>
-                            <a href="wishList.html">
+                            <a href="include/wishList.jsp">
                                 <img class="icon-head" src="icons/love-hand-drawn-heart-symbol-outline.png" alt="#">
                             </a>
                             <div class="notification-item">
-                                <a href="shopBag.html">
+                                <a href="include/shopBag.jsp">
                                     <div class="shopBag-container">
                                         <img class="icon-head" src="icons/shopping-bag.png" alt="#">
                                     </div>
@@ -360,52 +361,93 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                         <div class="carousel-inner">
                           <div class="carousel-item active" data-bs-interval="10000">
                             <div class="row row-cols-1 row-cols-md-4 g-4">
-                                <div class="col">
-                                  <div class="card h-100">
-                                    <video  class="card-img-top" src="https://brand.assets.adidas.com/video/upload/f_auto:video,q_auto/if_w_gt_400,w_400/tennis_ss24_roland_garros_launch_glpw_teaser_card_d_f15268b651.mp4" muted autoplay></video>
-                                    <div class="card-body">
-                                      <h5 class="card-title">Card title</h5>
-                                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    </div>
+                              <div class="col">
+                                <div class="card h-100">
+                                  <video  class="card-img-top" src="https://brand.assets.adidas.com/video/upload/f_auto:video,q_auto/if_w_gt_400,w_400/tennis_ss24_roland_garros_launch_glpw_teaser_card_d_f15268b651.mp4" muted autoplay></video>
+                                  <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                   </div>
                                 </div>
-                                <div class="col">
-                                  <div class="card h-100">
-                                    <video  class="card-img-top" src="https://brand.assets.adidas.com/video/upload/f_auto:video,q_auto/if_w_gt_400,w_400/glbl_aclubs_fcbayern_home_football_ss24_launch_onsite_tcc_d_dc8fb7d52c.mp4" muted autoplay></video>
-                                    <div class="card-body">
-                                      <h5 class="card-title">Card title</h5>
-                                      <p class="card-text">This is a short card.</p>
-                                    </div>
+                              </div>
+                              <div class="col">
+                                <div class="card h-100">
+                                  <video  class="card-img-top" src="https://brand.assets.adidas.com/video/upload/f_auto:video,q_auto/if_w_gt_400,w_400/glbl_aclubs_fcbayern_home_football_ss24_launch_onsite_tcc_d_dc8fb7d52c.mp4" muted autoplay></video>
+                                  <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">This is a short card.</p>
                                   </div>
                                 </div>
-                                <div class="col">
-                                  <div class="card h-100">
-                                    <img src="https://brand.assets.adidas.com/image/upload/f_gif,fl_lossy,q_auto/4440718_Onsite_SS_24_TIRO_Teaser_Carousel_1050x1400_9a4aaae240.gif" class="card-img-top" alt="...">
+                              </div>
+                              <div class="col">
+                                <div class="card h-100">
+                                  <img src="https://brand.assets.adidas.com/image/upload/f_gif,fl_lossy,q_auto/4440718_Onsite_SS_24_TIRO_Teaser_Carousel_1050x1400_9a4aaae240.gif" class="card-img-top" alt="...">
 
-                                    <div class="card-body">
-                                      <h5 class="card-title">Card title</h5>
-                                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                                    </div>
+                                  <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
                                   </div>
                                 </div>
-                                <div class="col">
-                                  <div class="card h-100">
-                                    <video  class="card-img-top" src="https://brand.assets.adidas.com/video/upload/f_auto:video,q_auto/if_w_gt_400,w_400/football_fw24_f50_launch_hp_teaser_carousel_animated_d_a21571d8ad.mp4" muted autoplay></video>
+                              </div>
+                              <div class="col">
+                                <div class="card h-100">
+                                  <video  class="card-img-top" src="https://brand.assets.adidas.com/video/upload/f_auto:video,q_auto/if_w_gt_400,w_400/football_fw24_f50_launch_hp_teaser_carousel_animated_d_a21571d8ad.mp4" muted autoplay></video>
 
-                                    <div class="card-body">
-                                      <h5 class="card-title">Card title</h5>
-                                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    </div>
+                                  <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                   </div>
                                 </div>
+                              </div>
+                          </div>
+                        </div>
+                        <div class="carousel-item" data-bs-interval="2000">
+                          <div class="row row-cols-1 row-cols-md-4 g-4">
+                              <div class="col">
+                                <div class="card h-100">
+                                  <video  class="card-img-top" src="https://brand.assets.adidas.com/video/upload/f_auto:video,q_auto/if_w_gt_400,w_400/glbl_aclubs_realmadrid_home_football_ss24_launch_onsite_tcc_03_o_984a2290bd.mp4" muted autoplay></video>
+
+                                  <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="card h-100">
+                                  <img src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_400,w_400/4554197_Teaser_Carousel_1050x1400_bfb48c6d9e.jpg" class="card-img-top" alt="...">
+                                  <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">This is a short card.</p>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="card h-100">
+                                  <img src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_400,w_400/fw24_sftm_tc_d_af448e3367.jpg" class="card-img-top" alt="...">
+
+                                  <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="card h-100">
+                                  <img src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_400,w_400/4548494_CAM_Onsite_FW_24_ECOM_Star_Wars_Nanzuka_and_Disney_12_June_SEA_Teaser_Carousel_1050x1400_cfbd628f18.jpg" class="card-img-top" alt="...">
+                                  <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                           </div>
-                          <div class="carousel-item" data-bs-interval="2000">
+                          <div class="carousel-item">
                             <div class="row row-cols-1 row-cols-md-4 g-4">
                                 <div class="col">
                                   <div class="card h-100">
-                                    <video  class="card-img-top" src="https://brand.assets.adidas.com/video/upload/f_auto:video,q_auto/if_w_gt_400,w_400/glbl_aclubs_realmadrid_home_football_ss24_launch_onsite_tcc_03_o_984a2290bd.mp4" muted autoplay></video>
-
+                                    <img src="image/jordan.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
                                       <h5 class="card-title">Card title</h5>
                                       <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -414,7 +456,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                                 </div>
                                 <div class="col">
                                   <div class="card h-100">
-                                    <img src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_400,w_400/4554197_Teaser_Carousel_1050x1400_bfb48c6d9e.jpg" class="card-img-top" alt="...">
+                                    <img src="image/jordan.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
                                       <h5 class="card-title">Card title</h5>
                                       <p class="card-text">This is a short card.</p>
@@ -423,8 +465,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                                 </div>
                                 <div class="col">
                                   <div class="card h-100">
-                                    <img src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_400,w_400/fw24_sftm_tc_d_af448e3367.jpg" class="card-img-top" alt="...">
-
+                                    <img src="image/jordan.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
                                       <h5 class="card-title">Card title</h5>
                                       <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
@@ -433,7 +474,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                                 </div>
                                 <div class="col">
                                   <div class="card h-100">
-                                    <img src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_400,w_400/4548494_CAM_Onsite_FW_24_ECOM_Star_Wars_Nanzuka_and_Disney_12_June_SEA_Teaser_Carousel_1050x1400_cfbd628f18.jpg" class="card-img-top" alt="...">
+                                    <img src="image/jordan.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
                                       <h5 class="card-title">Card title</h5>
                                       <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -441,8 +482,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                                   </div>
                                 </div>
                             </div>
-                          </div>
-                       
                           </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
@@ -517,7 +556,7 @@ adidas is about more than sportswear and workout clothes. We partner with the be
                   <a class="social-button tiktok" href="https://www.tiktok.com/" target="_blank"><i class="fab fa-tiktok text-white" uk-icon="tiktok"></i></a>
                   <a class="social-button youtube" href="https://www.youtube.com/" target="_blank"><i class="fa fa-youtube-play"></i></a>
                   <a class="social-button instagram" href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram"></i></a>
-              </div>
+              </div>      
             </div>
         </div>
 
@@ -550,9 +589,10 @@ adidas is about more than sportswear and workout clothes. We partner with the be
             videoVolume.classList.toggle("muted");
         }
     </script>
-  <!-- UIkit JS -->
-  <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/js/uikit.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/js/uikit-icons.min.js"></script>
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/js/uikit-icons.min.js"></script>
+        
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

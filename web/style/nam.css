@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto Condensed", sans-serif;;
+}
+
+.middle {
+    height: 105rem;
+}
+
+.container-poster .content-video{
+    position: absolute;
+    color: white;
+    bottom: 25rem;
+    left: 5rem;
+}
+
+.container-poster .content-video h1{
+    font-size: 3rem;
+}
+
+.container-poster .content-video p{
+    font-size: 1.2rem;
+}
+
+.container-poster .content-video a{
+    position: absolute;
+    background-color: white;
+    text-decoration: none;
+    color: black;
+    bottom: -5rem;
+    padding: 1rem 2rem 1rem 2rem;
+    z-index: 2;
+}
+.container-poster .content-video a:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    background-color: black;
+    color: white;
+    transition: all 0.5s;
+}
+
+.container-list-color {
+    position: static;
+    transform: translateY(-5rem);
+}
+
+footer {
+    position: relative;
+    top: 15rem; 
+}
+
+footer .description {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer .description-bottom{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: yellow;
+    height: 10rem;
+}
+
+footer .description-bottom .content-description .btn {
+    background-color: white;
+    border: solid 1px black;
+    padding: 1rem 1.5rem;
+    font-weight: 800;
+}
