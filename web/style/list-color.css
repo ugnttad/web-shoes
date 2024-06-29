@@ -7,8 +7,8 @@
 }
 
 .container-list-color {
-    background-color: beige;
-    position: absolute;
+    background-color: whitesmoke;
+    position: relative;
     padding: 1.5rem;
-   bottom: -60rem;
+   bottom: -8rem;
 }

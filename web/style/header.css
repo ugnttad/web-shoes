@@ -11,7 +11,8 @@
 
 .navbar {
     background-color: white;
-}
+    border-bottom: solid 1px black;
+    }
 
 .flex {
     display: flex;
@@ -133,6 +134,7 @@
 .navbar .middle-section ul{
     display: flex;
     position: relative;
+    right: 50px;
 }
 
 .navbar .middle-section nav {
@@ -144,7 +146,8 @@
 
 .navbar .middle-section li{
     color: white;
-    padding: 0 4rem 0 0;
+    padding: 0 5rem 0 0;
+   
 }
 .navbar .middle-section li a {
     text-decoration: none;
@@ -152,6 +155,7 @@
     font-size: 20px;
     padding-bottom: 12px;
     
+    white-space: nowrap;
 }
 
 .navbar .middle-section li a:hover{

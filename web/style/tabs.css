@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto Condensed", sans-serif;;
+}
+    
+
+.tabs-nav {
+    margin: 1rem 0 0 3rem;
+}
+
+.tabs-nav .container-tab{
+    display: flex;
+    
+}
+
+.tabs-nav .container-tab .tab{
+    padding-right: 1rem;
+
+}
+.tabs-nav .container-tab .tab a{
+    color: black;
+    font-size: 18px;
+    padding: 6px;
+    border-radius: 10%;
+}
+
+.tabs-nav .container-tab .tab a:hover{ 
+    background-color: black;
+    color: white;
+}
+
+.tabs-nav .container-tab .tab .tab-index{
+    font-weight: 500;
+}
+
+/* --------LIST ITEM */
+
+.list-Item {
+    margin-top: 2rem;
+}
+
+/* pagination-page */
+.pagination .page-link{
+    color: black;
+}
+
+.pagination-page {
+    width: 10rem;
+    margin: 0 auto;
+    /* padding-top: 2rem; */
+    position: relative;
+    bottom: 0rem;
+}
+
+.pagination-page #page-numbers{
+    text-align: center;
+}
+
+.pagination .active { 
+    /* background-color: #007BFF;  */
+    background-color: #262626;
+    color: white; 
+} 
+
+.tab-pane {
+    height: 100%;
+}
+
+.list-Item .list-tab {
+    padding: 1rem ;
+}
+
+.list-Item .list-tab a{
+    padding: 0.5rem 0 0.5rem 0;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.list-Item .list-tab a:hover{
+    background-color: black;
+    color: aliceblue;
+    transition: all 0.5s;
+}
