@@ -25,9 +25,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
         <link rel="shortcut icon" href="image/logo/logoSHop.png" type="image/x-icon">
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-              integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-
+        
+        <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="style/header.css">
         <link rel="stylesheet" href="style/header-video-trailer.css">
         <link rel="stylesheet" href="style/middle.css">
@@ -102,7 +101,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                     <div class="right-section">
                         <div class="container">
                             <div class="search-place">
-                                <form id="searchForm" action="search" method="get"> <!-- URL phải khớp với @WebServlet("/search") -->
+                                <form id="searchForm" action="SearchServlet" method="get"> <!-- URL phải khớp với @WebServlet("/search") -->
                                     <input id="searchInput" class="search-bar" type="text" name="query" placeholder="Tìm kiếm">
                                     <button type="submit" class="search-button">
                                         <img class="search-icon" src="icons/search.svg" alt="#">
@@ -149,39 +148,89 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         </div>
             
         <section class="middle">
-    <div class="container-middle">
-        <div class="product-list">
-            <!-- Loop through each product and generate product card -->
-            <% ArrayList<Products> products = (ArrayList<Products>) request.getAttribute("searchResults");
-            if (products != null) {
-                for (int i = 0; i < products.size(); i++) {
-                    Products product = products.get(i); %>
-                    <div class="product-item">
-                        <div class="card mb-4">
-                            <img src="<%= product.getImageURL()%>" class="card-img-top fixed-size-img" alt="<%= product.getName()%>">
+            <div class="container-middle">
+
+                <div class="tab-item" style="padding-bottom: 40px;">
+                    <div class="link-item">
+                        <a href="#">Hàng mới về</a>
+                        <a href="#">Premium</a>
+                        <a href="#">Giày dép hè</a>
+                        <a href="#">Summer outfit</a>
+                        <a href="#">Discount</a>
+                        <a href="#">xem Thêm</a>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <!-- Loop through each product and generate product card -->
+                    <% ArrayList<Products> products = (ArrayList<Products>) request.getAttribute("searchResults");
+                        if (products != null) {
+                            for (int i = 0; i < products.size(); i++) {
+                            Products product = products.get(i);
+                            String[] url = product.getImageURL().split(";");
+                    %>
+                    <div class="col-md-3 mb-4">
+                        <div class="card h-100">
+                            <img src="<%= url[0]%>" class="card-img-top fixed-size-img" alt="<%= product.getName()%>">
                             <div class="card-body">
                                 <h5 class="card-title"><%= product.getName()%></h5>
                                 <p class="card-text"><%= product.getDescription()%></p>
-                                <p class="card-text">Price: $<%= product.getPrice()%>/kg</p>
+                                <p class="card-text">Price: $<%= product.getPrice()%>/VNĐ</p>
                                 <a href="#" class="btn btn-primary">Add to Cart</a>
                             </div>
                         </div>
                     </div>
-            <% }
-            } else { %>
-                <p>Không tìm thấy kết quả nào.</p>
-            <% } %>
-        </div>
-    </div>
-</section>
+                    <% }
+                } else { %>
+                    <p>Không tìm thấy kết quả nào.</p>
+                    <% }%>
+                </div>
+            </div>
+        </section>
 
-<style>
-    .card-img-top {
-        width: 100%;
-        height: 400px; /* Điều chỉnh chiều cao cố định của ảnh */
-        object-fit: cover; /* Đảm bảo ảnh không bị méo khi co dãn */
-    }
-</style>
+        <style>
+            .product-list {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .product-item {
+                flex: 0 0 calc(25% - 1rem); /* 25% width for each item, adjust margin as needed */
+                margin-bottom: 1rem; /* Optional margin between items */
+                box-sizing: border-box;
+            }
+            .card-body {
+                height: 200px; /* Chiều cao cố định */
+                overflow: hidden; /* Ẩn phần nội dung thừa */
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .card-title {
+                font-size: 1.25rem;
+                font-weight: bold;
+                white-space: nowrap; /* Ngăn không cho từ xuống dòng */
+                overflow: hidden; /* Ẩn phần nội dung thừa */
+                text-overflow: ellipsis; /* Hiển thị ... khi vượt quá */
+            }
+
+            .card-text {
+                overflow: hidden; /* Ẩn phần nội dung thừa */
+                text-overflow: ellipsis; /* Hiển thị ... khi vượt quá */
+                display: -webkit-box;
+                -webkit-line-clamp: 1; /* Giới hạn số dòng tối đa hiển thị */
+                -webkit-box-orient: vertical;
+            }
+
+            .card-img-top {
+                width: 100%;
+                height: 400px; /* Chiều cao cố định cho hình ảnh */
+                object-fit: cover; /* Đảm bảo hình ảnh không bị méo */
+            }
+        </style>
 
         <footer>
             <div class="description">
