@@ -13,18 +13,16 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.Categories;
 import model.Products;
 import model.ProductsDB;
-import java.text.NumberFormat;
-import java.util.Locale;
+
 
 /**
  *
  * @author LENOVO
  */
-public class AllServlet extends HttpServlet {
-
+public class ShowWishListServlet extends HttpServlet {
+    ArrayList<Products> wishList = new ArrayList<Products>();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -42,10 +40,10 @@ public class AllServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AllServlet</title>");            
+            out.println("<title>Servlet ShowWishLisrServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AllServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ShowWishLisrServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,19 +61,21 @@ public class AllServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       String action = request.getParameter("action");
+        String action = request.getParameter("action");
         
         switch (action) {
-            case "listAll":
-                doListAll(request,response);
+            case "addWishLish":
+                doAddProductToWishList(request, response);
                 break;
-            case "showItem":
-                doListItem(request,response);
+            case "showWishLish":
+                doShowWishList(request, response);
+                break;
+            case "delete":
+                doDeleteItem(request, response);
                 break;
             default:
                 throw new AssertionError();
         }
-        
     }
 
     /**
@@ -102,39 +102,65 @@ public class AllServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private void doListAll(HttpServletRequest request, HttpServletResponse response) {
+    private void doAddProductToWishList(HttpServletRequest request, HttpServletResponse response) {
         try {
-             ArrayList<Products> list = ProductsDB.listAll();
-             request.setAttribute("list", list);
-            request.getRequestDispatcher("include/all.jsp").forward(request, response);
-        } catch (ServletException ex) {
-            Logger.getLogger(AllServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(AllServlet.class.getName()).log(Level.SEVERE, null, ex);
+            String productId_String = request.getParameter("id");
+            int productId = Integer.parseInt(productId_String);
+
+            Products products = ProductsDB.getProductById(productId);
+            
+            if (wishList == null ||wishList.isEmpty()) {
+                 wishList.add(products);
+            }else{
+                for(Products p : wishList){
+                    if (p.getProductID() == products.getProductID()) {
+                        wishList.remove(p);
+                    }else{
+                        wishList.add(products);
+
+                    }
+
+                }
+                
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(ShowWishListServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    private void doListItem(HttpServletRequest request, HttpServletResponse response) {
+    private void doShowWishList(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            request.setAttribute("wishList", wishList);
+            request.getRequestDispatcher("include/wishList.jsp").forward(request, response);
+        } catch (ServletException ex) {
+            Logger.getLogger(ShowWishListServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ShowWishListServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void doDeleteItem(HttpServletRequest request, HttpServletResponse response) {
+        
         try {
             String id_String = request.getParameter("id");
             int id = Integer.parseInt(id_String);
             Products products = ProductsDB.getProductById(id);
-            NumberFormat formatter = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
-            String formattedPrice = formatter.format(products.getPrice());
             
-            Categories categories = ProductsDB.getCategoriestById(products.getCategoryID());
+            for(Products p : wishList){
+                    if (p.getProductID() == products.getProductID()) {
+                        wishList.remove(p);
+                    }
+
+            }
+            doShowWishList(request, response);
             
-            String[] array = {"S","XS","L"}; 
-            
-            
-            request.setAttribute("array", array);
-            request.setAttribute("price", formattedPrice);
-            request.setAttribute("categories", categories);
-            request.setAttribute("product", products);
-            request.getRequestDispatcher("include/card.jsp").forward(request, response);
+//            request.setAttribute("wishList", wishList);
+//            request.getRequestDispatcher("ListWishListServlet").forward(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(AllServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ShowWishListServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+              
     }
 
 }

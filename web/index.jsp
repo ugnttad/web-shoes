@@ -106,7 +106,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
               <a href="include/sigin.jsp">
                 <img class="icon-head" src="icons/user.png" alt="#">
               </a>
-              <a href="include/wishList.jsp">
+              <a href="ShowWishListServlet?action=showWishLish">
                 <img class="icon-head" src="icons/love-hand-drawn-heart-symbol-outline.png" alt="#">
               </a>
               <div class="notification-item">

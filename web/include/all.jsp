@@ -7,6 +7,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.text.NumberFormat"%>
+<%@page import="java.util.Locale"%>
 <%@page import="model.Products"%>
 <!DOCTYPE html>
 
@@ -88,7 +90,7 @@
                             <li><a href="include/nam.jsp">Nam</a></li>
                             <li><a href="include/nu.jsp">Nữ</a></li>
                             <li><a href="include/discount.jsp">Giảm giá</a></li>
-                            <li><a href="include/all.jsp">Tất cả</a></li>
+                            <li><a href="AllServlet?action=listAll">Tất cả</a></li>
                         </ul>
                     </nav>
 
@@ -106,7 +108,7 @@
                             <a href="include/sigin.jsp">
                                 <img class="icon-head" src="icons/user.png" alt="#">
                             </a>
-                            <a href="include/wishList.jsp">
+                            <a href="ShowWishListServlet?action=showWishLish">
                                 <img class="icon-head" src="icons/love-hand-drawn-heart-symbol-outline.png" alt="#">
                             </a>
                             <div class="notification-item">
@@ -157,12 +159,18 @@
                                 
                                 for(Products item : list){
                                     String[] url = item.getImageURL().split(";");
+                                    double price = item.getPrice();
+                                    NumberFormat formatter = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
+                                    String formattedPrice = formatter.format(price);
                             %>
 
                                 <!-- <div class="col"> -->
                                 <div class="card uk-card uk-card-hover">
                                     <a  class="text-decoration-none text-dark" href="AllServlet?id=<%= item.getProductID() %>&action=showItem">
                                         <img src="<%= url[0] %> " class="card-img-top" alt="...">
+                                        <div class="card-footer bg-dark rounded-bottom text-center">
+                                            <small class="text-light fw-semibold "><%= formattedPrice %></small>
+                                        </div>
                                         <div class="card-body">
                                             <h5 class="card-title "><%= item.getName() %></h5>
                                             <p class="card-text"><%= item.getDescription() %></p>

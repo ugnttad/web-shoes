@@ -10,21 +10,19 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.Categories;
 import model.Products;
 import model.ProductsDB;
-import java.text.NumberFormat;
-import java.util.Locale;
 
 /**
  *
  * @author LENOVO
  */
-public class AllServlet extends HttpServlet {
-
+public class ShowAddToBag extends HttpServlet {
+    Map<Products,String> pro = new HashMap<>();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -42,10 +40,10 @@ public class AllServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AllServlet</title>");            
+            out.println("<title>Servlet ShowAddToBag</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AllServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ShowAddToBag at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,19 +61,18 @@ public class AllServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       String action = request.getParameter("action");
+        String action = request.getParameter("action");
         
         switch (action) {
-            case "listAll":
-                doListAll(request,response);
+            case "addToBag":
+                doAddToBag(request,response);
                 break;
-            case "showItem":
-                doListItem(request,response);
+            case "showBag":
+                doShowBag(request, response);
                 break;
             default:
                 throw new AssertionError();
         }
-        
     }
 
     /**
@@ -102,38 +99,43 @@ public class AllServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private void doListAll(HttpServletRequest request, HttpServletResponse response) {
-        try {
-             ArrayList<Products> list = ProductsDB.listAll();
-             request.setAttribute("list", list);
-            request.getRequestDispatcher("include/all.jsp").forward(request, response);
-        } catch (ServletException ex) {
-            Logger.getLogger(AllServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(AllServlet.class.getName()).log(Level.SEVERE, null, ex);
+    private void doAddToBag(HttpServletRequest request, HttpServletResponse response) {
+         String sizeProduct = null;
+        String[] checkedValues = request.getParameterValues("checkboxes");
+        if (checkedValues != null && checkedValues.length > 0) {
+            // Xử lý từng giá trị checkbox được chọn
+            for (String value : checkedValues) {
+                sizeProduct = value;
+                // Xử lý logic dựa trên giá trị của checkbox được chọn
+            }
+        } else {
+            System.out.println("No checkboxes selected.");
+            // Xử lý khi không có checkbox nào được chọn
         }
+        
+       
+        String idProduct_String = request.getParameter("id");
+        int idProduct = Integer.parseInt(idProduct_String);
+        
+        try {
+            Products products = ProductsDB.getProductById(idProduct);
+            
+            pro.put(products, sizeProduct);
+        } catch (Exception ex) {
+            Logger.getLogger(ShowAddToBag.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }
 
-    private void doListItem(HttpServletRequest request, HttpServletResponse response) {
+    private void doShowBag(HttpServletRequest request, HttpServletResponse response) {
         try {
-            String id_String = request.getParameter("id");
-            int id = Integer.parseInt(id_String);
-            Products products = ProductsDB.getProductById(id);
-            NumberFormat formatter = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
-            String formattedPrice = formatter.format(products.getPrice());
-            
-            Categories categories = ProductsDB.getCategoriestById(products.getCategoryID());
-            
-            String[] array = {"S","XS","L"}; 
-            
-            
-            request.setAttribute("array", array);
-            request.setAttribute("price", formattedPrice);
-            request.setAttribute("categories", categories);
-            request.setAttribute("product", products);
-            request.getRequestDispatcher("include/card.jsp").forward(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(AllServlet.class.getName()).log(Level.SEVERE, null, ex);
+            request.setAttribute("MapProduct", pro);
+            request.getRequestDispatcher("include/shopBag.jsp").forward(request, response);
+        } catch (ServletException ex) {
+            Logger.getLogger(ShowAddToBag.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ShowAddToBag.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -117,6 +117,7 @@
     transform: translate(5%, 20%);
     width: 110%;
     height: 110%;
+    color: #f0f0f0;
 }
 
 .button-86:hover::after {
@@ -124,6 +125,7 @@
     transform: translate(0, 0);
     width: 100%;
     height: 100%;
+    color: #f0f0f0;
 }
 
 .button-86:active::after {
@@ -242,3 +244,6 @@
     font-size: 2.5rem;
   }
 } */
+.btn-space .button-86{
+    color: #f0f0f0;
+}

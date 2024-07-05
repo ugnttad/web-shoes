@@ -12,6 +12,18 @@
         <servlet-name>AllServlet</servlet-name>
         <servlet-class>controller.AllServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ShowWishListServlet</servlet-name>
+        <servlet-class>controller.ShowWishListServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListWishListServlet</servlet-name>
+        <servlet-class>controller.ListWishListServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowAddToBag</servlet-name>
+        <servlet-class>controller.ShowAddToBag</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SearchServlet</servlet-name>
         <url-pattern>/SearchServlet</url-pattern>
@@ -23,6 +35,18 @@
     <servlet-mapping>
         <servlet-name>AllServlet</servlet-name>
         <url-pattern>/AllServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowWishListServlet</servlet-name>
+        <url-pattern>/ShowWishListServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListWishListServlet</servlet-name>
+        <url-pattern>/ListWishListServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowAddToBag</servlet-name>
+        <url-pattern>/ShowAddToBag</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
