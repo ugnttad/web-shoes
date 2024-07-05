@@ -111,7 +111,7 @@
                                 <img class="icon-head" src="icons/love-hand-drawn-heart-symbol-outline.png" alt="#">
                             </a>
                             <div class="notification-item">
-                                <a href="include/shopBag.jsp">
+                                <a href="ShowAddToBag?action=showBag">
                                     <div class="shopBag-container">
                                         <img class="icon-head" src="icons/shopping-bag.png" alt="#">
                                     </div>
@@ -183,7 +183,7 @@
                                 <h3 class="title"><a href="#"><%= item.getKey().getName() %></a></h3>
                                 <div class="price"><%= formattedPrice %></div>
                             </div>
-                            <a href="ShowWishListServlet?id=<%= item.getKey().getProductID() %>&action=delete" class="btn btn-primary">Delete</a>
+                            <a href="ShowAddToBag?id=<%= item.getKey().getProductID() %>&action=delete" class="btn btn-primary">Delete</a>
                         </div>
                     </div>
                 <%

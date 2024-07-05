@@ -219,26 +219,25 @@
                                         <input type="hidden" name="id" value="${product.productID}" />
 
                                         <div class="checkbox-wrapper-47">
-                                            <input type="radio" class="btn-check" name="checkboxes" id="cb-S" value="S" autocomplete="off">
-                                            <label class="btn btn-secondary" for="cb-S">S</label>
+                                            <input type="radio" class="btn-check" name="checkboxes" id="cb-S" value="S" autocomplete="off" checked>
+                                            <label class="btn btn-light" for="cb-S">S</label>
 
                                             <input type="radio" class="btn-check" name="checkboxes" id="cb-XS" value="XS" autocomplete="off">
-                                            <label class="btn btn-secondary" for="cb-XS">XS</label>
+                                            <label class="btn btn-light" for="cb-XS">XS</label>
 
                                             <input type="radio" class="btn-check" name="checkboxes" id="cb-XL" value="XL" autocomplete="off">
-                                            <label class="btn btn-secondary" for="cb-XL">XL</label>
+                                            <label class="btn btn-light" for="cb-XL">XL</label>
                                         </div>
 
                                         <div class="btn-space">
-                                            <a href="#" class="button-86 uk-margin-top text-light add-to-bag"
-                                               data-id="${product.productID}" role="button">THÊM VÀO GIỎ HÀNG</a>
+
+                                            <button type="button" id="addToBagButton" class="button-86 uk-margin-top text-light btn btnOption" align="center">THÊM VÀO GIỎ HÀNG</button>
 
                                             <a href="ShowWishListServlet?id=${product.productID}&action=addWishLish"
                                                class="button-55 add-to-wishlist" data-id="${product.productID}" role="button">
                                                 <div class="heart-like-button"></div>
                                             </a>
 
-                                            <button type="button" id="addToBagButton" class="btn btn-primary btnOption" align="center">THÊM VÀO GIỎ HÀNG</button>
                                         </div>
                                     </form>
 
@@ -351,6 +350,7 @@
                             });
 
                             document.getElementById('addToBagButton').addEventListener('click', function(event) {
+                             
                                 event.preventDefault();
 
                                 var form = document.getElementById('addToBagForm');
@@ -378,80 +378,6 @@
                                 xhr.send();
                             });
 
-
-
-
-
-                                // document.querySelectorAll('.add-to-bag').forEach((element) => {
-                                //     element.addEventListener('click', (event) => {
-                                //         event.preventDefault();
-                                      
-                                       
-
-                                //         var productId = element.dataset.id;
-                                //         var actionUrl = `ShowAddToBag?id=${product.productID}&action=addToBag`;
-                                //         console.log('Action URL:', actionUrl); // Log URL hành động
-
-                                //         var xhr = new XMLHttpRequest();
-                                //         xhr.open('GET', actionUrl);
-                                //         xhr.onload = () => {
-                                //             if (xhr.status === 200) {
-                                //                 // Handle the response here (e.g., show a success message, update the UI)
-                                //                 console.log('Product added to bag successfully!');
-                                //             } else {
-                                //                 // Handle errors here
-                                //                 console.error('Error adding product to Bag:', xhr.statusText);
-                                //             }
-                                //         };
-                                //         xhr.onerror = function () {
-                                //             // Handle network errors here
-                                //             console.error('Network error.');
-                                //         };
-                                //         xhr.send();
-                                //     });
-                                // });
-                          
-
-
-//                             document.addEventListener('DOMContentLoaded', () => {
-//                                 let sizeProduct = '';
-
-//                                 document.querySelectorAll('.btn-size').forEach((btn)=>{
-//                                     btn.addEventListener('click', ()=>{
-//                                         sizeProduct = btn.innerText;
-                                       
-//                                     });
-//                                 });
-
-//                                 document.querySelectorAll('.add-to-bag').forEach((element) => {
-//                                     element.addEventListener('click', (event) => {
-//                                         event.preventDefault();
-//                                         console.log(sizeProduct);
-                                        
-//                                         var productId = element.dataset.id;
-// //                                        lỗi ko hiển thị size vì chưa truyền đc 
-//                                         var actionUrl = `ShowAddToBag?id=${product.productID}&action=addToBag&sizeProduct=${sizeProduct}`;
-//                                         // console.log(typeof sizeProduct);
-//                                         console.log(actionUrl);
-//                                         var xhr = new XMLHttpRequest();
-//                                         xhr.open('GET', actionUrl);
-//                                         xhr.onload = () => {
-//                                             if (xhr.status === 200) {
-//                                                 // Handle the response here (e.g., show a success message, update the UI)
-//                                                 //                        alert('Product added to wishlist successfully!');
-//                                             } else {
-//                                                 // Handle errors here
-//                                                 console.error('Error adding product to Bag:', xhr.statusText);
-//                                             }
-//                                         };
-//                                         xhr.onerror = function () {
-//                                             // Handle network errors here
-//                                             console.error('Network error.');
-//                                         };
-//                                         xhr.send();
-//                                     });
-//                                 });
-//                             });
 
 
                             document.addEventListener('DOMContentLoaded', function () {

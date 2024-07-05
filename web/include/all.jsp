@@ -112,7 +112,7 @@
                                 <img class="icon-head" src="icons/love-hand-drawn-heart-symbol-outline.png" alt="#">
                             </a>
                             <div class="notification-item">
-                                <a href="include/shopBag.jsp">
+                                <a href="ShowAddToBag?action=showBag">
                                     <div class="shopBag-container">
                                         <img class="icon-head" src="icons/shopping-bag.png" alt="#">
                                     </div>

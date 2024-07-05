@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -70,6 +71,9 @@ public class ShowAddToBag extends HttpServlet {
             case "showBag":
                 doShowBag(request, response);
                 break;
+            case "delete":
+                doDeleteInBag(request, response);
+                break;
             default:
                 throw new AssertionError();
         }
@@ -100,34 +104,63 @@ public class ShowAddToBag extends HttpServlet {
     }// </editor-fold>
 
     private void doAddToBag(HttpServletRequest request, HttpServletResponse response) {
-         String sizeProduct = null;
+        String sizeProduct = null;
         String[] checkedValues = request.getParameterValues("checkboxes");
         if (checkedValues != null && checkedValues.length > 0) {
-            // Xử lý từng giá trị checkbox được chọn
-            for (String value : checkedValues) {
-                sizeProduct = value;
-                // Xử lý logic dựa trên giá trị của checkbox được chọn
-            }
+            // Only the last selected checkbox value will be used
+            sizeProduct = checkedValues[checkedValues.length - 1];
         } else {
             System.out.println("No checkboxes selected.");
-            // Xử lý khi không có checkbox nào được chọn
+            // Handle the case where no checkbox is selected
+            return;
         }
-        
-       
+
         String idProduct_String = request.getParameter("id");
-        int idProduct = Integer.parseInt(idProduct_String);
-        
+        int idProduct;
+        try {
+            idProduct = Integer.parseInt(idProduct_String);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid product ID: " + idProduct_String);
+            // Handle invalid product ID format
+            return;
+        }
+
         try {
             Products products = ProductsDB.getProductById(idProduct);
-            
-            pro.put(products, sizeProduct);
+            if (products == null) {
+                System.out.println("Product not found with ID: " + idProduct);
+                // Handle the case where the product is not found
+                return;
+            }
+
+            // Initialize the map if it is null
+            if (pro == null) {
+                pro = new HashMap<>();
+            }
+
+            // Update the product with the new size if it exists, otherwise add it
+            boolean productFound = false;
+            for (Map.Entry<Products, String> entry : pro.entrySet()) {
+                if (entry.getKey().getProductID() == products.getProductID()) {
+                    entry.setValue(sizeProduct); // Update the size
+                    productFound = true;
+                    break;
+                }
+            }
+
+            if (!productFound) {
+                pro.put(products, sizeProduct); // Add the product with the size
+            }
+
+            // Set the updated map to the request attribute
+            request.setAttribute("MapProduct", pro);
+            request.getRequestDispatcher("include/shopBag.jsp").forward(request, response);
+
         } catch (Exception ex) {
             Logger.getLogger(ShowAddToBag.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-    }
-
+}
+    
     private void doShowBag(HttpServletRequest request, HttpServletResponse response) {
         try {
             request.setAttribute("MapProduct", pro);
@@ -136,6 +169,57 @@ public class ShowAddToBag extends HttpServlet {
             Logger.getLogger(ShowAddToBag.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(ShowAddToBag.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void doDeleteInBag(HttpServletRequest request, HttpServletResponse response) {
+        String idProduct_String = request.getParameter("id");
+        int idProduct = 0;
+        try {
+            idProduct = Integer.parseInt(idProduct_String);
+        } catch (NumberFormatException e) {
+            // Handle invalid integer parsing
+            Logger.getLogger(ShowAddToBag.class.getName()).log(Level.SEVERE, "Invalid product ID: " + idProduct_String, e);
+            try {
+                response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid product ID");
+            } catch (IOException ex) {
+                Logger.getLogger(ShowAddToBag.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return;
+        }
+
+        try {
+            Products products = ProductsDB.getProductById(idProduct);
+            if (products == null) {
+                response.sendError(HttpServletResponse.SC_NOT_FOUND, "Product not found");
+                return;
+            }
+
+            boolean found = false;
+            Iterator<Map.Entry<Products, String>> iterator = pro.entrySet().iterator();
+            while (iterator.hasNext()) {
+                Map.Entry<Products, String> item = iterator.next();
+                if (item.getKey().getProductID() == products.getProductID()) {
+                    iterator.remove();
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found) {
+                response.sendError(HttpServletResponse.SC_NOT_FOUND, "Product not found in the bag");
+                return;
+            }
+
+            request.setAttribute("MapProduct", pro);
+            request.getRequestDispatcher("include/shopBag.jsp").forward(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(ShowAddToBag.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Internal server error");
+            } catch (IOException ex1) {
+                Logger.getLogger(ShowAddToBag.class.getName()).log(Level.SEVERE, null, ex1);
+            }
         }
     }
 
