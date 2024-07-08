@@ -11,20 +11,26 @@ public class Products {
     private String imageURL;
     private int stockQuantity;
     private int manufacturerID;
+    private int Size;
+    private String gender;
 
-    // Constructors, getters and setters
-
-    public Products() {}
-
-    public Products(int productID, String name, double price, String description, String imageURL) {
-        this.productID = productID;
-        this.name = name;
-        this.price = price;
-        this.description = description;
-        this.imageURL = imageURL;
+    public int getSize() {
+        return Size;
     }
 
-    public Products(int productID, String name, String brand, int categoryID, double price, String description, String imageURL, int stockQuantity, int manufacturerID) {
+    public void setSize(int Size) {
+        this.Size = Size;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Products(int productID, String name, String brand, int categoryID, double price, String description, String imageURL, int stockQuantity, int manufacturerID, int Size, String gender) {
         this.productID = productID;
         this.name = name;
         this.brand = brand;
@@ -34,6 +40,14 @@ public class Products {
         this.imageURL = imageURL;
         this.stockQuantity = stockQuantity;
         this.manufacturerID = manufacturerID;
+        this.Size = Size;
+        this.gender = gender;
+    }
+
+    // Constructors, getters and setters
+
+    public Products() {
+    
     }
 
     // Getters and setters...

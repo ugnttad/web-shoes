@@ -3,23 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/shopSHOES/web-shoes/web/include/searchProducts.jsp</file>
-            <file>file:/D:/shopSHOES/web-shoes/src/java/controller/ShowAddToBag.java</file>
-            <file>file:/D:/shopSHOES/web-shoes/src/java/controller/SearchServlet.java</file>
-            <file>file:/D:/shopSHOES/web-shoes/src/java/controller/AllServlet.java</file>
-            <file>file:/D:/shopSHOES/web-shoes/src/java/controller/ShowWishListServlet.java</file>
-            <file>file:/D:/shopSHOES/web-shoes/web/include/shopBag.jsp</file>
-            <file>file:/D:/shopSHOES/web-shoes/web/WEB-INF/web.xml</file>
-            <file>file:/D:/shopSHOES/web-shoes/web/index.html</file>
-            <file>file:/D:/shopSHOES/web-shoes/web/include/all.html</file>
-            <file>file:/D:/shopSHOES/web-shoes/src/java/model/ProductsDB.java</file>
-            <file>file:/D:/shopSHOES/web-shoes/web/include/card.jsp</file>
-            <file>file:/D:/shopSHOES/web-shoes/web/include/all.jsp</file>
-            <file>file:/D:/shopSHOES/web-shoes/src/java/model/Categories.java</file>
-            <file>file:/D:/shopSHOES/web-shoes/web/index.jsp</file>
-            <file>file:/D:/shopSHOES/web-shoes/web/include/wishList.jsp</file>
-            <file>file:/D:/shopSHOES/web-shoes/src/java/model/Products.java</file>
-            <file>file:/D:/shopSHOES/web-shoes/web/include/showInfoProduct.jsp</file>
+            <file>file:/C:/Users/dat20/OneDrive/Documents/GitHub/web-shoes/src/java/controller/AllServlet.java</file>
+            <file>file:/C:/Users/dat20/OneDrive/Documents/GitHub/web-shoes/src/java/controller/ListWishListServlet.java</file>
+            <file>file:/C:/Users/dat20/OneDrive/Documents/GitHub/web-shoes/web/index.html</file>
+            <file>file:/C:/Users/dat20/OneDrive/Documents/GitHub/web-shoes/src/java/model/UserDB.java</file>
+            <file>file:/C:/Users/dat20/OneDrive/Documents/GitHub/web-shoes/src/java/controller/ShowInfoProductServlet.java</file>
         </group>
     </open-files>
 </project-private>
